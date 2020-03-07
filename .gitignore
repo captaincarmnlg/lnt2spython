@@ -4,3 +4,4 @@ txt/
 debug.log
 cmd code
 testseries
+__pycache__/*.pyc
