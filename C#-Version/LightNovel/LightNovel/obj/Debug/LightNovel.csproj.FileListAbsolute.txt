@@ -1,0 +1,12 @@
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\LightNovel.exe.config
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\LightNovel.exe
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\LightNovel.pdb
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\WebDriver.dll
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\WebDriver.Support.dll
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\WebDriver.xml
+C:\Dev\C#\LightNovel\LightNovel\bin\Debug\WebDriver.Support.xml
+C:\Dev\C#\LightNovel\LightNovel\obj\Debug\LightNovel.csprojAssemblyReference.cache
+C:\Dev\C#\LightNovel\LightNovel\obj\Debug\LightNovel.csproj.CoreCompileInputs.cache
+C:\Dev\C#\LightNovel\LightNovel\obj\Debug\LightNovel.csproj.CopyComplete
+C:\Dev\C#\LightNovel\LightNovel\obj\Debug\LightNovel.exe
+C:\Dev\C#\LightNovel\LightNovel\obj\Debug\LightNovel.pdb
