@@ -5,7 +5,7 @@ driver = webdriver.Chrome()#'./chromedriver.exe'
 driver.get("https://novelplanet.com")
 while True:
     trys=0
-    time.sleep(7)
+    time.sleep(6)
     try:
         closebtn = driver.find_element_by_class_name("cmpboxbtnno")
         pass
@@ -34,7 +34,7 @@ def listln(listuri):
     return elmt   
 def scrape(elmt,series):
     driver.get("https://novelplanet.com"+elmt)
-    time.sleep(18)
+    time.sleep(2.5)
     title = driver.find_element_by_xpath('//*[@id="main"]/div[3]/h4').text.replace(":"," ")
     txt = title
     txt += " "
@@ -46,6 +46,9 @@ def scrape(elmt,series):
     for char in c:
         txt = txt.replace(char,"...")
     txt.strip()
+    d='?/*<>|:"'
+    for char in d:
+        title = title.replace(char,"") 
     try:
         os.mkdir("txt/"+series)
         pass

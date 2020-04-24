@@ -4,6 +4,7 @@ import os
 import mysql.connector
 import argparse
 import webln
+import threading
 parser = argparse.ArgumentParser()
 parser.add_argument('series',help="add series url part",type=str)
 parser.add_argument("--list","-ls", help="display list yes or no",action="store_true")
@@ -11,6 +12,8 @@ parser.add_argument("--item","-i",type=int,help="-i or --item + integer of the l
 parser.add_argument("--minitem","-mi",type=int,help="-i or --item + integer of the list nr")
 parser.add_argument("--maxitem","-xi",type=int,help="-i or --item + integer of the list nr")
 parser.add_argument("-all",help="-all ",action="store_true")
+parser.add_argument("-mp3",help="-mp3 ",action="store_true")
+parser.add_argument("-txt",help="-txt ",action="store_true")
 args = parser.parse_args()
 series = ""#make it last called via sql(optional)
 upcount=0
@@ -75,20 +78,44 @@ class filemanager():
     def downloadtxtfull(self):
         for x in self.quetxt:
             y = self.novelweb.scrape(x,series)
-            print(y)
+            format2p="{}. {}"
+            print(format2p.format(len(self.quemp3),y))
+            if isinstance(len(self.quemp3)/50,int) !=False:
+                time.sleep(20)
+                print("waiting 20s")
+                pass
             self.quemp3.append(y)
             pass
         print(len(self.quemp3))
     def downloadmp3full(self):
+        try:
+            os.mkdir("speach/"+series)
+            pass        
+        except OSError:
+            pass   
         directory = "txt/"+series
+        directoryspeach= "speach/"+series
         for filename in os.listdir(directory):
-            if filename.endswith(".txt"):
+            isnotexistant = True
+            for speachfilename in os.listdir(directoryspeach):
+                expectedname = filename.replace(".txt","") 
+                expectedname = expectedname.replace(" ","_") 
+                expectedname = expectedname.replace("_"," ") 
+                #print(speachfilename.replace(".mp3",""))
+                #print(expectedname)   
+                if speachfilename.replace(".mp3","") ==  expectedname:
+                    isnotexistant = False
+                    #print("yes it fire'd")
+                    break
+                
+            if filename.endswith(".txt") and isnotexistant!=False:
                 filepath = "txt/"+series+"/"+filename
                 print(filename.replace(".txt",""))
                 t2s(filepath,filename.replace(".txt",""))
                 continue
-            else:
-                continue
+                
+            
+
         
     def destroyremaints(self):
         self.novelweb.quit()
@@ -159,6 +186,16 @@ if args.all:
         debug.destroyremaints()
         debug.downloadmp3full()
         pass
+    pass
+#mp3 only
+if args.mp3:
+    debug.destroyremaints()
+    debug.downloadmp3full()
+    pass
+if args.txt:
+    debug.quelisttxt(series,True)
+    debug.downloadtxtfull()
+    debug.destroyremaints()
     pass
 #create a comandline interface class
 #get list of a novel an select one or one with the comandline

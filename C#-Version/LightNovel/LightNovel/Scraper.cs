@@ -65,7 +65,7 @@ namespace LightNovel
 
         }
 
-        public void CreateFile(string text)
+        public void writetotxtFile(string text)
         {
             TextWriter tw = new StreamWriter("C:/LightNovel/LightNovel.txt", true);
             tw.WriteLine(text);
