@@ -21,3 +21,5 @@
  next input the nr of the entry you want
 
 <h1>Unfortunatly Novel plannet Has been deleted ;(</h1>
+so im working on a project wich  uses novel updates instead.
+this time im building it inside of c# instead of python.
